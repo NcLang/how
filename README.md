@@ -96,6 +96,6 @@ You can define the list your local script uses by setting the `List` parameter i
 
 The following Q&A lists are currently available (click to view the XLS-styled XML files):
 
-- [QA-default](http://how.nl5.de/xml/QA-default)
+- [QA-default](http://how.nl5.de/xml/QA-default)@[how.nl5.de](http://how.nl5.de)
 
-In case you setup and compiled a useful Q&A list on your own and are willing to make this list publicly available, just drop me a line so I can add add a link to your API sever above.
+In case you set up an API serer and compiled a useful Q&A list on your own and are willing to make this list publicly available, just drop me a line so I can add a link to your API server above.
