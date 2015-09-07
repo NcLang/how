@@ -98,4 +98,4 @@ The following Q&A lists are currently available (click to view the XLS-styled XM
 
 - [QA-default](http://how.nl5.de/xml/QA-default)@[how.nl5.de](http://how.nl5.de)
 
-In case you set up an API serer and compiled a useful Q&A list on your own and are willing to make this list publicly available, just drop me a line so I can add a link to your API server above.
+In case you set up an API server and compiled a useful Q&A list on your own, and are willing to make this list publicly available, just drop me a line so I can add a link to your API server above.
