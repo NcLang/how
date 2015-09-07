@@ -1,10 +1,8 @@
 # how - a command-line Q&A tool
 
-Note that this documentation is also available on http://how.nl5.de.
+Note that this documentation is also available at http://how.nl5.de.
 
-For more information, see also http://www.nicolailang.de.
-
-**how** is a simple python script I wrote to increase my "command-line agility".
+**how** is a simple Python script I wrote to increase my "command-line agility".
 
 It provides quick access to code snippets that I use too rarely to remember, but frequently enough to annoy me whenever I have to look them up anew.
 
@@ -39,10 +37,11 @@ Add a user without a home directory:
 - sudo useradd "username" 
 - sudo passwd "username"
 ```
+Now you can proceed without leaving the command-line at any point, provided your database contains the required code-snipped.
 
 ## Installation
 
-**how** is a simple, single-file Python script. It requires Python 3 (tested with Python 3.4) and the following python packages (install them with your OS package manager or via pip):
+**how** is a simple, single-file Python script. It requires Python 3 (tested with Python 3.4) and the following Python packages (install them with your OS package manager or via `pip`):
 
 - `termcolor`
 - `xml`
@@ -53,7 +52,7 @@ Then download the latest version via git
 ```
 git clone http://github.com/NcLang/how
 ```
-Place the script in a directory of your choice (e.g. ~/bin/ or ~/scripts/), make sure that it is executable,
+Place the script in a directory of your choice (e.g. `~/bin/` or `~/scripts/`), make sure that it is executable,
 ```
 chmod 755 how.py
 ```
@@ -67,9 +66,9 @@ Now you are ready to go.
 
 ## Configuration
 
-When you first call how, it will create a configuration file in `~/.how/` and download the default list from how.nl5.de as XML file into the same directory. The script uses this file as database, so no internet connection is required once the list has been downloaded.
+When you first call how, it will create a configuration file in `~/.how/` and download the default list from `how.nl5.de` as XML file into the same directory. The script uses this file as database, so no internet connection is required once the list has been downloaded.
 
-It will, however, update the list automatically whenever you call how and the local file is older than the update interval specified as UpdateInterval in the configuration file how.cfg. You can change the list used to search for code snippets by setting the parameter List to one of the names listed below in the API section.
+It will, however, update the list automatically whenever you call how and the local file is older than the update interval specified as `UpdateInterval` in the configuration file `how.cfg`. You can change the list used to search for code snippets by setting the parameter List to one of the names listed below in the API section.
 
 To force an update and redownload the currently specified list, call
 ```
@@ -91,7 +90,7 @@ where `LIST` should be replaced by one of the valid list names listed below.
 
 The above URL ist set as default API in the python script.
 
-You can define the list your local script uses by setting the List parameter in the configuration file `~/.how/how.cfg`. By default the list "QA-default" is used.
+You can define the list your local script uses by setting the `List` parameter in the configuration file `~/.how/how.cfg`. By default the list "QA-default" is used.
 
 ### Available Q&A lists
 
