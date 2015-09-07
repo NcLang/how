@@ -26,35 +26,4 @@ if (PHP_SAPI != "cli") {
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-
-function getAllRecords($db,$table) {
-  
-  $response = array();
-
-  // Get record
-  $sql="SELECT id,question,answer FROM `$table`";
-  $result=$db->query($sql);
-  if(!$result) die('Error : ('. $db->errno .') '. $db->error);
-  while ($row = $result->fetch_assoc()) {
-    $response[] = $row;
-  }       
-
-  return($response);
-}
-
-function getAllLists($db) {
-  
-  $response = array();
-
-  // Get record
-  $sql="SHOW TABLES";
-  $result=$db->query($sql);
-  if(!$result) die('Error : ('. $db->errno .') '. $db->error);
-  while ($row = $result->fetch_assoc()) {
-    $response[] = reset($row);
-  }       
-
-  return($response);
-}
-
 ?>
