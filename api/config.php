@@ -1,9 +1,9 @@
 <?php
 
 // General data
-$admin_email="kontakt@nicolailang.de";
-$administrator="Nicolai Lang";
-$website_name="HowAPI";
+$admin_email="your@email.adress";
+$administrator="Your Name";
+$website_name="How API";
 
 if (PHP_SAPI != "cli") {
   // IP-Adresse
@@ -18,9 +18,9 @@ $date = date('Y-m-d');
 $time = date('H:i:s');
 
 // MySQL data
-$username="how_user";    
-$password="g2y6Hy_5";        
-$database="nicolai_how"; 
+$username="db_user";    
+$password="db_password";        
+$database="database"; 
 
 function getAllRecords($db,$table) {
   
@@ -52,13 +52,4 @@ function getAllLists($db) {
   return($response);
 }
 
-
-
-/*
-  <!--
-  ========================================
-  LOADED successfully config.inc
-  ========================================
-  -->
-*/
 ?>
