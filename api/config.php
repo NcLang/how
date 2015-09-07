@@ -1,9 +1,18 @@
 <?php
 
+// -------- PERSONALIZE SETTINGS -------- //
+
 // General data
-$admin_email="your@email.adress";
+$admin_email="your@email.address";
 $administrator="Your Name";
-$website_name="How API";
+$website_name="My How-API";
+
+// MySQL data
+$username="MySQL_db_user";    
+$password="MySQL_db_password";        
+$database="MySQL_db_name"; 
+
+// ------ NO CHANGES BELOW THIS LINE ------ //
 
 if (PHP_SAPI != "cli") {
   // IP-Adresse
@@ -17,10 +26,6 @@ if (PHP_SAPI != "cli") {
 $date = date('Y-m-d');
 $time = date('H:i:s');
 
-// MySQL data
-$username="db_user";    
-$password="db_password";        
-$database="database"; 
 
 function getAllRecords($db,$table) {
   
