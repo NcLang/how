@@ -68,7 +68,7 @@ Now you are ready to go.
 
 When you first call how, it will create a configuration file in `~/.how/` and download the default list from `how.nl5.de` as XML file into the same directory. The script uses this file as database, so no internet connection is required once the list has been downloaded.
 
-It will, however, update the list automatically whenever you call how and the local file is older than the update interval specified as `UpdateInterval` in the configuration file `how.cfg`. You can change the list used to search for code snippets by setting the parameter List to one of the names listed below in the API section.
+It will, however, update the list automatically whenever you call how and the local file is older than the update interval specified as `UpdateInterval` in the configuration file `how.cfg`. You can change the list used to search for code snippets by setting the parameter `List` to one of the names listed below in the API section.
 
 To force an update and redownload the currently specified list, call
 ```
