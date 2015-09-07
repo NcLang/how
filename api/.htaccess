@@ -1,9 +1,6 @@
 RewriteEngine on
-
 RewriteRule ^/?index\.htm$ index.php [L]
 RewriteRule ^/?index\.xhtml$ index.php [L]
 RewriteRule ^/?index\.html$ index.php [L]
-
 RewriteRule ^/?xml/([a-zA-Z_0-9-]*)/?$ index.php?list=$1 [L]
-
 AddType 'text/html; charset=UTF-8' html
