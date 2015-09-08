@@ -99,7 +99,7 @@ To set up your own API server, you need
 - a webserver (Apache,nginx),
 - PHP
 - and a MySQL server accessible via PHP.
-- 
+
 First, download the `api` folder to your webserver so that the `index.php` can be accessed via HTTP.
 
 Then create a new MySQL database with dedicated user/password and insert this information at the right places in `config.php`. 
