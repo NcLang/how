@@ -117,9 +117,12 @@ CREATE TABLE IF NOT EXISTS `LISTNAME` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 where `LISTNAME` is to be replaced by the name of your Q&A list.
-You can now start filling your table with code snippets as follows.
 
+You can now start filling your table with code snippets. 
+For each snippet, add a row to your MySQL table (Q&A list) with the following data:
 
+1. `question`-row: The question is captured by a regular expression of the form `* ... $`. Try to contrive regular expressions that are both unique for the code snipped and as flexible as possible to capture different forms of the same question.
+2. `answer`-row: Add a short description and one or more code snippets. Each snippet should start with `- ` in a new line (this highlights the snipped in the command-line).
 
 ### Publicly available Q&A lists
 
