@@ -110,12 +110,11 @@ It is recommended to manage your tables by a MySQL frontend such as PHP-MyAdmin.
 To set up your first Q&A list, run the following SQL commands,
 ```
 CREATE TABLE IF NOT EXISTS `LISTNAME` (
-  `id` int(3) unsigned NOT NULL,
+  `id` int(3) unsigned NOT NULL AUTO_INCREMENT,
   `question` varchar(200) NOT NULL,
-  `answer` varchar(1000) NOT NULL
+  `answer` varchar(1000) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-ALTER TABLE `LISTNAME` ADD PRIMARY KEY (`id`);
-ALTER TABLE `LISTNAME` MODIFY `id` int(3) unsigned NOT NULL AUTO_INCREMENT;
 ```
 where `LISTNAME` is to be replaced by the name of your Q&A list.
 You can now start filling your table with code snippets as follows.
