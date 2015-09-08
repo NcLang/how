@@ -1,7 +1,5 @@
 # how - a command-line Q&A tool
 
-Note that this documentation is also available at http://how.nl5.de.
-
 **how** is a simple Python script I wrote to increase my "command-line agility".
 
 It provides quick access to code snippets that I use too rarely to remember, but frequently enough to annoy me whenever I have to look them up anew.
