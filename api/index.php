@@ -102,11 +102,11 @@ else {
   <h1>How Q&A List Server</h1>
   
   This is a Q&L list server for the command-line script <b>how</b>.<br>
-  Documentation is available on GitHub: <a href="https://github.com/NcLang/how">github.com/NcLang/how</a>.
+  Documentation is available on GitHub: <a href="https://github.com/NcLang/how" target="_blank">github.com/NcLang/how</a>.
  
   <h2>Available Q&A lists</h2>
 
-  The following Q&A lists are currently available on this server (click to view the XLS-styled XML files):
+  The following Q&A lists are currently available on this server (click to view the XSL-styled XML files):
 
   <?php
   // Entries
@@ -117,18 +117,17 @@ else {
   echo "</ol>";
   ?>
   
-  <h2>Quick Start: How to use the lists</h2>
+  <h2>Quick-Start: How to use the lists</h2>
   
   To use one (or multiple) of the lists from above, extend your local configuration file <code>~/.how/how.cfg</code> 
   by one (or multiple) of the following blocks:
-  <div class="code">[UNIQUENAME]
-  # Update interval in hours
-  UpdateInterval = 24
-  # URL of this API server
-  URL = http://<?php echo $server_name; ?>/xml/
-  # One of the available lists from above
-  List = QA-default
-  </div>
+<div class="code">[UNIQUENAME]
+# Update interval in hours
+UpdateInterval = 24
+# URL of this API server
+URL = http://<?php echo $server_name; ?>/xml/
+# One of the available lists from above
+List = QA-default</div>
   
   </body>
   </html>
