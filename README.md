@@ -66,31 +66,51 @@ Now you are ready to go.
 
 ## Configuration
 
-When you first call how, it will create a configuration file in `~/.how/` and download the default list from `how.nl5.de` as XML file into the same directory. The script uses this file as database, so no internet connection is required once the list has been downloaded.
+When you first call how, it will create a configuration file in `~/.how/` and download the default list from my API at `how.nl5.de` as XML file into the same directory. The script uses this file as database, so no internet connection is required once the list has been downloaded.
 
 It will, however, update the list automatically whenever you call how and the local file is older than the update interval specified as `UpdateInterval` in the configuration file `how.cfg`. You can change the list used to search for code snippets by setting the parameter `List` to one of the names listed below in the API section.
 
-To force an update and redownload the currently specified list, call
+You can use multiple Q&A lists on different API servers at the same time. The script will just download all Q&A lists separately and search for possible answers in all of them. To use multiple Q&A lists, expand the configuration `how.cfg` by additional sections (their names must be distinct but are otherwise arbitrary):
+
+```
+[LIST1]
+# Update interval in hours for list 1                                       
+UpdateInterval = 24
+# URL of API server for list 1
+URL = http://how.nl5.de/xml/
+# Name of list 1                         
+List = QA-default
+
+[LIST2]
+# Update interval in hours for list 2                                     
+UpdateInterval = 48
+# URL of API server for list 2
+URL = http://some.other.url/xml/
+# Name of list 2                      
+List = QA-alternative
+```
+
+To force an update and redownload all currently specified lists, call
 ```
 how -u
 ```
-If you want to manage your database (`~/.how/howdb.xml`) manually (e.g. to add/modify your personal entries), you can disable the automatic update (which would overwrite your local modifications) by setting `UpdateInterval = 0`.
+If you want to manage your database (`~/.how/howdb_xxx_xxx.xml`) locally (e.g. to add/modify your personal entries), you can disable the automatic update (which would overwrite your local modifications) by setting `UpdateInterval = 0`.
 
 ## API
 
 ### Using the API
 
-The lists containing regular expression defining the questions and the corresponding answers are internally stored in a MySQL database on my webserver and served as dynamically generated XML files.
+The lists containing regular expression defining the questions and the corresponding answers are stored in a MySQL database on a webserver and served as dynamically generated XML files.
 
-The latter can be directly accessed publicly via
+My Q&A list server can be directly accessed publicly via
 ```
 http://how.nl5.de/xml/LIST
 ```
 where `LIST` should be replaced by one of the valid list names listed below.
 
-The above URL ist set as default API in the python script.
+The above URL ist set as default API in the configuration.
 
-You can define the list your local script uses by setting the `List` parameter in the configuration file `~/.how/how.cfg`. By default the list "QA-default" is used.
+You can define the list and server your local script uses by setting the `List` and `URL` parameter in the configuration file `~/.how/how.cfg`. By default the list "QA-default" and my server `how.nl5.de/xml/` is used.
 
 ### Setting up your own Q&A API server
 
@@ -131,6 +151,6 @@ regular expressions that capture a vague collection of keywords to provide you w
 
 The following Q&A lists are currently available (click to view the XLS-styled XML files):
 
-- [QA-default](http://how.nl5.de/xml/QA-default) @ [how.nl5.de](http://how.nl5.de)
+- [QA-default](http://how.nl5.de/xml/QA-default) @ [how.nl5.de/xml/](http://how.nl5.de/xml/)
 
 In case you set up an API server and compiled a useful Q&A list on your own, and are willing to make this list publicly available, just drop me a line so I can add a link to your API server above.
