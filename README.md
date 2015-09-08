@@ -92,7 +92,28 @@ The above URL ist set as default API in the python script.
 
 You can define the list your local script uses by setting the `List` parameter in the configuration file `~/.how/how.cfg`. By default the list "QA-default" is used.
 
-### Available Q&A lists
+### Setting up your own Q&A API server
+
+The Q&A lists are internally hosted by a MySQL database and served as XML files. 
+To set up your own API server, you need
+- a webserver (Apache,nginx),
+- PHP
+- and a MySQL server accessible via PHP.
+First, download the `api` folder to your webserver so that the `index.php` can be accessed via HTTP.
+
+Then create a new MySQL database with dedicated user/password and insert this information at the right places in `config.php`. 
+
+If you navigate to the `index.php`, it will list all available tables in your database as possible Q&A lists.
+It is recommended to manage your tables by a MySQL frontend such as PHP-MyAdmin.
+
+To set up your first Q&A list, run the following SQL commands,
+```
+g
+```
+where `LISTNAME` is to be replaced by the name of your Q&A list.
+
+
+### Publicly available Q&A lists
 
 The following Q&A lists are currently available (click to view the XLS-styled XML files):
 
