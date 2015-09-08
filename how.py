@@ -27,14 +27,18 @@ import os
 import os.path as path
 import configparser
 
+##----------------------------------------------
 ## Basic parameters
-api="http://how.nl5.de/xml/"
-local="~/.how/"
-database="howdb.xml"
-config="how.cfg"
+##----------------------------------------------
 
+local="~/.how/"
+config="how.cfg"
+DEFAULT_CONFIG = "[DEFAULT]\n# Update interval in hours\nUpdateInterval = 24\n# URL of API server\nURL = http://how.nl5.de/xml/\n# Available Q&A list at API\nList = QA-default\n"
 local=os.path.expanduser(local)
-DEFAULT_CONFIG = "[DEFAULT]\n# Update interval in hours\nUpdateInterval = 24\n# Look at how.nl5.de for available lists\nList = QA-default\n"
+
+##----------------------------------------------
+## Functions
+##----------------------------------------------
 
 def pline():
     print("--------------------------------------------------")
@@ -52,13 +56,7 @@ def howOld(file):
 
 def downloadFile(url,fname):
     urllib.request.urlretrieve(url,fname)
-                
-def getRaw(url):
-    response = urllib.request.urlopen(url)
-    data = response.read()
-    text = data.decode('utf-8')
-    return text
-    
+                    
 def getDB(fname):
     tree = ET.parse(fname);
     root = tree.getroot()
@@ -98,8 +96,20 @@ def answer(question,db):
             cnt += 1
     return ret
 
-def usage():
-    print("Usage: > how to ask a question?")
+def baseurl(url):
+    regex = r"^(http[s]?://)?([^/]+)(.+[^/])[/]?$"
+    result = re.search(regex,url.strip())
+    return (result.group(2),result.group(3))
+
+def normalize_url(url):
+    return "http://"+"".join(baseurl(url))+"/" 
+
+def local_dbname(prefix,cfg):
+    return "howdb_"+prefix+"_"+cfg['List']+"@"+baseurl(cfg['URL'])[0]+".xml"
+
+##----------------------------------------------
+## MAIN
+##----------------------------------------------
 
 def main():
     
@@ -113,30 +123,41 @@ def main():
     cfg.read(local+config)
 
     ## Download, update DB if necessary
-    if os.path.isfile(local+database):
-        if howOld(local+database) > 3600*int(cfg['DEFAULT']['UpdateInterval']) and int(cfg['DEFAULT']['UpdateInterval']) != 0:
-            if checkURL(api):
-                print("Updating local database ...");
-                downloadFile(api+cfg['DEFAULT']['List'],local+database)
-            else:
-                print("Database is old but API is down. Try update later ...")
-    else:
-        if checkURL(api):
-            print("Downloading database ...");
-            downloadFile(api+cfg['DEFAULT']['List'],local+database)
+    for name,qa in cfg.items():
+        database = local_dbname(name,qa)
+        if os.path.isfile(local+database):
+            if howOld(local+database) > 3600*int(qa['UpdateInterval']) and int(qa['UpdateInterval']) != 0:
+                if checkURL(normalize_url(qa['URL'])):
+                    print("Updating local database for '%s' ..." % qa['List']);
+                    downloadFile(normalize_url(qa['URL'])+qa['List'],local+database)
+                else:
+                    print("Database '%s' is old but API at '%s' is down. Try update later ..." % (qa['List'],qa['URL']))
         else:
-            print("No database present and API is down. That's bad.")
-            sys.exit(1)
+            if checkURL(normalize_url(qa['URL'])):
+                print("Downloading list '%s' from '%s' ..." % (qa['List'],qa['URL']));
+                downloadFile(normalize_url(qa['URL'])+qa['List'],local+database)
+            else:
+                print("Database '%s' not present and API at '%s' is down. That's bad." % (qa['List'],qa['URL']))
+                sys.exit(1)
     
     ## Forced DB update
     if len(sys.argv) > 1:
         if sys.argv[1] == "--update" or sys.argv[1] == "-u":
-            print("Updating local database ...");
-            downloadFile(api+cfg['DEFAULT']['List'],local+database)
+            for name,qa in cfg.items():
+                database = local_dbname(name,qa)
+                if checkURL(normalize_url(qa['URL'])):
+                    print("Downloading list '%s' from '%s' ..." % (qa['List'],qa['URL']));
+                    downloadFile(normalize_url(qa['URL'])+qa['List'],local+database)
+                else:
+                    print("API for '%s' at '%s' is down. Try again later." % (qa['List'],qa['URL']))
             sys.exit(0)
 
-    ## Parse database
-    db = getDB(local+database)
+    ## Parse databases
+    db = []
+    for name,qa in cfg.items():
+        database = local_dbname(name,qa)
+        if os.path.isfile(local+database):
+            db.extend(getDB(local+database))
 
     ## Get question
     question = " ".join(sys.argv[1:])
@@ -158,7 +179,7 @@ def main():
         print(colored("Didn't catch that ...","red"))
 
 
-        
+##---------------------------------------------- 
 if __name__ == "__main__":
     main()
-        
+##---------------------------------------------- 
