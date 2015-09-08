@@ -15,7 +15,7 @@ Creating the script was motivated by the following situation that disrupts my ac
 
 Most people working with the command-line may have encountered this kind of workflow disruption, though the list of such disruptive, "non-routine" snippets clearly depends on the user and its command-line affinity.
 
-how was written to minimize such disruptions. It is used as follows:
+`how` was written to minimize such disruptions. It is used as follows:
 ```
 how to add a user in ubuntu
 ```
