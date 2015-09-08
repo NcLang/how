@@ -121,10 +121,11 @@ where `LISTNAME` is to be replaced by the name of your Q&A list.
 You can now start filling your table with code snippets. 
 For each snippet, add a row to your MySQL table (Q&A list) with the following data:
 
-1. `question`-column: The question is captured by a regular expression of the form `* ... $`. Try to contrive regular expressions that are both unique for the code snipped and as flexible as possible to capture different forms of the same question.
+1. `question`-column: The question is captured by a regular expression of the form `^ ... $`. Try to contrive regular expressions that are both unique for the code snipped and as flexible as possible to capture different forms of the same question.
 2. `answer`-column: Add a short description and one or more code snippets. Each snippet should start with `- ` in a new line (this highlights the snipped in the command-line).
 
-Have a look at the default list [QA-default](http://how.nl5.de/xml/QA-default) on my server for examples of code snippets and their capturing regular expressions.
+Have a look at the default list [QA-default](http://how.nl5.de/xml/QA-default) on my server for examples of code snippets and their capturing regular expressions. Be aware that all the usefulness of `how` stems from the 
+regular expressions that capture a vague collection of keywords to provide you with a code snipped from your list.
 
 ### Publicly available Q&A lists
 
