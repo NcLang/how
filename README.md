@@ -151,6 +151,6 @@ regular expressions that capture a vague collection of keywords to provide you w
 
 The following Q&A lists are currently available (click to view the XLS-styled XML files):
 
-- [QA-default](http://how.nl5.de/xml/QA-default) @ [how.nl5.de/xml/](http://how.nl5.de/xml/)
+- [QA-default](http://how.nl5.de/xml/QA-default) @ [how.nl5.de](http://how.nl5.de)
 
 In case you set up an API server and compiled a useful Q&A list on your own, and are willing to make this list publicly available, just drop me a line so I can add a link to your API server above.
