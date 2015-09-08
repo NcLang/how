@@ -99,6 +99,7 @@ To set up your own API server, you need
 - a webserver (Apache,nginx),
 - PHP
 - and a MySQL server accessible via PHP.
+- 
 First, download the `api` folder to your webserver so that the `index.php` can be accessed via HTTP.
 
 Then create a new MySQL database with dedicated user/password and insert this information at the right places in `config.php`. 
@@ -111,6 +112,8 @@ To set up your first Q&A list, run the following SQL commands,
 g
 ```
 where `LISTNAME` is to be replaced by the name of your Q&A list.
+You can now start filling your table with code snippets as follows.
+
 
 
 ### Publicly available Q&A lists
