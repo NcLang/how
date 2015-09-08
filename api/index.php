@@ -89,38 +89,22 @@ else {
 
   <!DOCTYPE HTML>
   <html>
-  <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>how - Q&A tool</title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="style.css">
+  	<head>
+  	<title><?php echo $website_name; ?></title>
+  	<meta charset="UTF-8">
+  	<meta http-equiv="expires" content="0">
+	<meta http-equiv="author" content="<?php echo $administrator; ?>">
+  	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+  	<link rel="stylesheet" href="style.css">
   </head>
   <body>
 
-  <h1>How-API Server</h1>
+  <h1>How Q&A List Server</h1>
   
-  Documentation is also available on GitHub: <a href="https://github.com/NcLang/how">github.com/NcLang/how</a>.
-  <br>For more information, see also <a href="https://www.nicolailang.de/">www.nicolailang.de</a>.
-
-You can change the list used to search for code snippets by setting the parameter <code>List</code> to one of the names listed below in the API section.
-<br>To force an update and redownload the currently specified list, call
-			<div class="code">how -u</div>
-If you want to manage your database (<code>~/.how/howdb.xml</code>) manually (e.g. to add/modify your personal entries), you can disable the automatic update (which would overwrite your local modifications) by setting <code>UpdateInterval = 0</code>. 
-
-  <h2>API</h2>
-
-  <h3>Using the API</h3>
-
-  The lists containing regular expression defining the questions and the corresponding answers
-    are internally stored in a MySQL database and served as dynamically generated XML files.<br>
-    The latter can be directly accessed via
-    <p><code>http://how.nl5.de/xml/LIST</code></p>
-  where LIST should be replaced by one of the valid list names listed below.<br>
-    The above URL ist set as default API in the python script.<br>
-      You can define the list your local script uses by setting the <code>List</code> parameter in
-      the configuration file <code>~/.how/how.cfg</code>. By default the list "QA-default" is used.
-
-  <h3>Available Q&A lists</h3>
+  This is a Q&L list server for the command-line script <b>how</b>.<br>
+  Documentation is available on GitHub: <a href="https://github.com/NcLang/how">github.com/NcLang/how</a>.
+ 
+  <h2>Available Q&A lists</h2>
 
   The following Q&A lists are currently available on this server (click to view the XLS-styled XML files):
 
@@ -132,6 +116,19 @@ If you want to manage your database (<code>~/.how/howdb.xml</code>) manually (e.
   }	
   echo "</ol>";
   ?>
+  
+  <h2>Quick Start: How to use the lists</h2>
+  
+  To use one (or multiple) of the lists from above, extend your local configuration file <code>~/.how/how.cfg</code> 
+  by one (or multiple) of the following blocks:
+  <div class="code">[DEFAULT]
+  # Update interval in hours
+  UpdateInterval = 24
+  # URL of this API server
+  URL = http://<?php echo $server_name; ?>/xml/
+  # One of the available lists from above
+  List = QA-default
+  </div>
   
   </body>
   </html>
