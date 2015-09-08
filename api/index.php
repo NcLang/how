@@ -101,7 +101,7 @@ else {
 
   <h1>How Q&A List Server</h1>
   
-  This is a Q&L list server for the command-line script <b>how</b>.<br>
+  This is a Q(uestion)&(A)nswer list server for the command-line script <b>how</b>.<br>
   Documentation is available on GitHub: <a href="https://github.com/NcLang/how" target="_blank">github.com/NcLang/how</a>.
  
   <h2>Available Q&A lists</h2>
