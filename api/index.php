@@ -121,7 +121,7 @@ else {
   
   To use one (or multiple) of the lists from above, extend your local configuration file <code>~/.how/how.cfg</code> 
   by one (or multiple) of the following blocks:
-  <div class="code">[DEFAULT]
+  <div class="code">[UNIQUENAME]
   # Update interval in hours
   UpdateInterval = 24
   # URL of this API server
